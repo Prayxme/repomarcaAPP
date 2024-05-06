@@ -1,13 +1,7 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toast
+    [isOpen]="isToastOpen"
+    [message]="alertMsg"
+    [duration]="5000"
+    (didDismiss)="setOpen(false)"
+></ion-toast>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
