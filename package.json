@@ -33,6 +33,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "boxicons": "^2.1.4",
     "cordova-plugin-flashlight": "^3.2.0",
     "ionicons": "^7.2.1",
     "jquery": "^3.7.1",
