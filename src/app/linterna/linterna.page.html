@@ -1,5 +1,18 @@
-<div class="containerLinterna">
-  <ion-button (click)="openLinterna()" expand="block" fill="clear" shape="round">
-    Linterna
-  </ion-button>
-</div>
+<ion-header [translucent]="true" >
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="containerLinterna">
+    <ion-button (click)="openLinterna()" fill="outline" shape="round" color="secondary">
+      Activar Linterna
+    </ion-button>
+
+    <ion-button (click)="openHome()" fill="outline" shape="round" color="secondary">
+      Volver a Home
+    </ion-button>
+  </div>
+<!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+</ion-content>
+

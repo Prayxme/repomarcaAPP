@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonToast, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { triangle, mapOutline, homeOutline, constructOutline, businessOutline, cogOutline} from 'ionicons/icons';
+import { triangle, mapOutline, homeOutline, constructOutline, businessOutline, cogOutline, flashlightOutline} from 'ionicons/icons';
 import { Router } from "@angular/router";
 import { Flashlight } from "@awesome-cordova-plugins/flashlight/ngx";
 import { Network } from '@capacitor/network';
+import { RouterLink } from "@angular/router";
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Network } from '@capacitor/network';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, IonToast, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
+  imports: [IonIcon, IonButton, IonToast, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink],
   providers:[Flashlight]
 })
 export class HomePage {
@@ -23,7 +24,7 @@ export class HomePage {
   alertMsg = ''
 
   constructor(public router: Router, private flashlight: Flashlight){
-    addIcons({triangle, mapOutline, homeOutline, constructOutline, businessOutline, cogOutline})
+    addIcons({triangle, mapOutline, homeOutline, constructOutline, businessOutline, cogOutline, flashlightOutline})
     Network.addListener('networkStatusChange', status => {
       console.log(`Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`);
       this.alertMsg = `Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`
@@ -61,5 +62,9 @@ export class HomePage {
 
   setOpen(isOpen: boolean) {
     this.isToastOpen = isOpen;
+  }
+
+  linternaPage(){
+    this.router.navigate(['/linterna'])   
   }
 }
