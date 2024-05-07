@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.ionic.repomarcaApp;
 
 import com.getcapacitor.BridgeActivity;
 

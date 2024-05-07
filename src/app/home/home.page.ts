@@ -23,23 +23,37 @@ export class HomePage {
   isToastOpen = false;
   alertMsg = ''
 
+  statusNetwork = ''
+
   constructor(public router: Router, private flashlight: Flashlight){
     addIcons({triangle, mapOutline, homeOutline, constructOutline, businessOutline, cogOutline, flashlightOutline})
-    Network.addListener('networkStatusChange', status => {
+    
+    this.networkToast()
+    this.networkStatus()
+    this.blinkLinterna()
+  }
+
+  networkToast(){
+
+    Network.addListener('networkStatusChange', async (status) => {
       console.log(`Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`);
       this.alertMsg = `Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`
       this.isToastOpen = true;
-      this.blinkLinterna()
+      this.setOpen
     });
+  }  
+  
+  async networkStatus(){
+    try{
+
+      const status = await Network.getStatus();
     
-  }
-  
-  networkStatus = async () => {
-    const status = await Network.getStatus();
-  
-    console.log(`Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`);
-    this.alertMsg = `Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`
-    this.isToastOpen = true;
+      console.log(`Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`);
+      this.alertMsg = `Network status: ${status.connected}, Tipo de Conexion: ${status.connectionType}`
+      this.isToastOpen = true;
+    }catch{
+      console.log('error', Error);
+    }
 
   };
 
@@ -47,7 +61,7 @@ export class HomePage {
     this.flashlight.toggle()
   }
 
-  blinkLinterna(){
+  async blinkLinterna(){
     this.flashlight.toggle();
     setTimeout(() => {
       this.flashlight.toggle();
@@ -60,7 +74,7 @@ export class HomePage {
     }, 1500);
   }
 
-  setOpen(isOpen: boolean) {
+  async setOpen(isOpen: boolean) {
     this.isToastOpen = isOpen;
   }
 
