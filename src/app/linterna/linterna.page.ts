@@ -24,6 +24,6 @@ export class LinternaPage {
   }
 
   openHome(){
-    this.router.navigate(['/tab1'])
+    this.router.navigate(['/tabs'])
   }  
 }
