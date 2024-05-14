@@ -4,5 +4,18 @@
 
 <ion-content [fullscreen]="true">
   
-  <app-explore-container name="Catalogo Electricidad"></app-explore-container>
+  <!-- <app-explore-container name="Catalogo Electricidad"></app-explore-container> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let foto of camaraServicio.fotos">
+        <ion-img [src]="foto.webviewPath"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="hacerFoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
