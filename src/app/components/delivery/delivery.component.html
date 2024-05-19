@@ -1,0 +1,19 @@
+<div class="containe-fluid">
+
+  <div *ngIf="false">
+    <h3>Posicion Actual</h3>
+    <p>Latitud: {{ latitud }}</p>
+    <p>Longitud: {{ longitud }}</p>
+  </div>
+  <ion-button (click)="obtenerPosicion()" shape="round">
+    <ion-icon slot="icon-only" name="location"></ion-icon>
+  </ion-button>
+  <a [href]="lugar" *ngIf="lugar !== ''" target="_blank">
+    <ion-button shape="round">
+      <ion-icon slot="icon-only" name="pin"></ion-icon>
+    </ion-button>
+  </a>
+  
+  <capacitor-google-map #map></capacitor-google-map>
+</div>
+
